@@ -36,7 +36,6 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    print("whatsup bitchessss")
     declared_arguments = []
     # UR specific arguments
     declared_arguments.append(
@@ -71,7 +70,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "description_package",
-            default_value="ur_description",
+            default_value="moveit_resources_ur_description",
             description="Description package with robot URDF/XACRO files. Usually the argument \
         is not set, it enables use of a custom description.",
         )
