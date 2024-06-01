@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ur_moveit_config</name>
-  <version>2.2.10</version>
+  <version>2.3.6</version>
   <description>
      An example package with MoveIt2 configurations for UR robots.
   </description>
@@ -27,7 +27,7 @@
   <exec_depend>moveit_servo</exec_depend>
   <exec_depend>moveit_simple_controller_manager</exec_depend>
   <exec_depend>rviz2</exec_depend>
-  <exec_depend>ur_description</exec_depend>
+  <exec_depend>moveit_resources_ur_description</exec_depend>
   <exec_depend>urdf</exec_depend>
   <exec_depend>warehouse_ros_sqlite</exec_depend>
   <exec_depend>xacro</exec_depend>
