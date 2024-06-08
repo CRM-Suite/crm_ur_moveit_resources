@@ -16,106 +16,72 @@ from launch.substitutions import (
 
 
 def generate_launch_description():
-    # Declare arguments
+    ur_type = LaunchConfiguration("ur_type")
+    robot_ip = LaunchConfiguration("robot_ip")
     declared_arguments = []
     declared_arguments.append(
         DeclareLaunchArgument(
+            "ur_type",
+            description="Type/series of used UR robot.",
+            choices=[
+                "ur3",
+                "ur3e",
+                "ur5",
+                "ur5e",
+                "ur10",
+                "ur10e",
+                "ur16e",
+                "ur20",
+                "ur30",
+            ],
+            default_value="ur3",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
             "robot_ip",
-            default_value="192.168.0.100",
+            default_value="192.168.0.101",  # put your robot's IP address here
             description="IP address by which the robot can be reached.",
         )
     )
     declared_arguments.append(
-        DeclareLaunchArgument(
-            "tf_prefix",
-            default_value="right_ur3_",
-            description="tf_prefix of the joint names, useful for "
-            "multi-robot setup. If changed, also joint names in the controllers' configuration "
-            "have to be updated.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "use_fake_hardware",
-            default_value="false",
-            description="Start robot with fake hardware mirroring command to its states.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "fake_sensor_commands",
-            default_value="false",
-            description="Enable fake command interfaces for sensors used for simple simulations. "
-            "Used only if 'use_fake_hardware' parameter is true.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "headless_mode",
-            default_value="false",
-            description="Enable headless mode for robot control",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "initial_joint_controller",
-            default_value="joint_trajectory_controller",
-            description="Initially loaded robot controller.",
-            choices=[
-                "scaled_joint_trajectory_controller",
-                "joint_trajectory_controller",
-                "forward_velocity_controller",
-                "forward_position_controller",
-            ],
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "activate_joint_controller",
-            default_value="true",
-            description="Activate loaded joint controller.",
-        )
-    )
-    declared_arguments.append(
-        DeclareLaunchArgument(
-            "launch_rviz", default_value="false", description="Launch RViz?"
-        )
+        DeclareLaunchArgument("launch_rviz", default_value="true", description="Launch RViz?")
     )
 
-    robot_ip = LaunchConfiguration("robot_ip")
-    tf_prefix = LaunchConfiguration("tf_prefix")
-    use_fake_hardware = LaunchConfiguration("use_fake_hardware")
-    fake_sensor_commands = LaunchConfiguration("fake_sensor_commands")
-    headless_mode = LaunchConfiguration("headless_mode")
-    initial_joint_controller = LaunchConfiguration("initial_joint_controller")
-    activate_joint_controller = LaunchConfiguration("activate_joint_controller")
-    launch_rviz = LaunchConfiguration("launch_rviz")
-
-    base_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            [
-                PathJoinSubstitution(
+    return LaunchDescription(
+        declared_arguments
+        + [
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
                     [
-                        FindPackageShare("ur_robot_driver"),
-                        "launch",
-                        "ur_control.launch.py",
+                        PathJoinSubstitution(
+                            [
+                                FindPackageShare("ur_robot_driver"),
+                                "launch",
+                                "ur_control.launch.py",
+                            ]
+                        )
                     ]
-                )
-            ]
-        ),
-        launch_arguments={
-            "ur_type": "ur3",
-            "robot_ip": robot_ip,
-            "description_package": "crm_description",
-            "description_file": "crm.urdf.xacro",
-            "tf_prefix": tf_prefix,
-            "use_fake_hardware": use_fake_hardware,
-            "fake_sensor_commands": fake_sensor_commands,
-            "headless_mode": headless_mode,
-            "initial_joint_controller": initial_joint_controller,
-            "activate_joint_controller": activate_joint_controller,
-            "launch_rviz": launch_rviz,
-        }.items(),
+                ),
+                launch_arguments={
+                    "ur_type": ur_type,
+                    "robot_ip": robot_ip,
+                    "tf_prefix": [LaunchConfiguration("ur_type"), "_"],
+                    "rviz_config_file": PathJoinSubstitution(
+                        [
+                            FindPackageShare("crm_description"),
+                            "rviz",
+                            "view_robot.rviz",
+                        ]
+                    ),
+                    "description_launchfile": PathJoinSubstitution(
+                        [
+                            FindPackageShare("crm_description"),
+                            "launch",
+                            "rsp.launch.py",
+                        ]
+                    ),
+                }.items(),
+            ),
+        ]
     )
-
-    return LaunchDescription(declared_arguments + [base_launch])
