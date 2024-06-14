@@ -14,14 +14,14 @@
     </group>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="right_ur3_base_link_inertia" link2="right_ur3_shoulder_link" reason="Adjacent"/>
-    <disable_collisions link1="right_ur3_base_link_inertia" link2="table" reason="Adjacent"/>
+    <disable_collisions link1="right_ur3_base_link_inertia" link2="vention_bench" reason="Adjacent"/>
     <disable_collisions link1="right_ur3_forearm_link" link2="right_ur3_upper_arm_link" reason="Adjacent"/>
     <disable_collisions link1="right_ur3_forearm_link" link2="right_ur3_wrist_1_link" reason="Adjacent"/>
     <disable_collisions link1="right_ur3_forearm_link" link2="right_ur3_wrist_2_link" reason="Never"/>
     <disable_collisions link1="right_ur3_shoulder_link" link2="right_ur3_upper_arm_link" reason="Adjacent"/>
     <disable_collisions link1="right_ur3_shoulder_link" link2="right_ur3_wrist_1_link" reason="Never"/>
     <disable_collisions link1="right_ur3_shoulder_link" link2="right_ur3_wrist_2_link" reason="Never"/>
-    <disable_collisions link1="right_ur3_shoulder_link" link2="table" reason="Never"/>
+    <disable_collisions link1="right_ur3_shoulder_link" link2="vention_bench" reason="Never"/>
     <disable_collisions link1="right_ur3_wrist_1_link" link2="right_ur3_wrist_2_link" reason="Adjacent"/>
     <disable_collisions link1="right_ur3_wrist_1_link" link2="right_ur3_wrist_3_link" reason="Never"/>
     <disable_collisions link1="right_ur3_wrist_2_link" link2="right_ur3_wrist_3_link" reason="Adjacent"/>
