@@ -47,7 +47,7 @@ def generate_launch_description():
 
     moveit_config = (
         MoveItConfigsBuilder("crm_robot", package_name="crm_moveit_config")
-            # .moveit_cpp(file_path=get_package_share_directory("crm_moveit_config") + "/config/notebook.yaml")
+            .moveit_cpp(file_path=get_package_share_directory("crm_moveit_config") + "/config/notebook.yaml")
             .to_moveit_configs()
     )
 
@@ -82,21 +82,21 @@ def generate_launch_description():
     #     parameters=[moveit_config.to_dict()],
     # )
 
-    # servo_yaml = load_yaml("crm_moveit_config", "config/ur_servo.yaml")
-    # servo_params = {"moveit_servo": servo_yaml}
-    # servo_node = Node(
-    #     package="moveit_servo",
-    #     condition=IfCondition(launch_servo),
-    #     executable="servo_node_main",
-    #     parameters=[
-    #         moveit_config.to_dict(),
-    #         servo_params,
-    #     ],
-    #     output="screen",
-    # )
+    servo_yaml = load_yaml("crm_moveit_config", "config/ur_servo.yaml")
+    servo_params = {"moveit_servo": servo_yaml}
+    servo_node = Node(
+        package="moveit_servo",
+        condition=IfCondition(launch_servo),
+        executable="servo_node_main",
+        parameters=[
+            moveit_config.to_dict(),
+            servo_params,
+        ],
+        output="screen",
+    )
 
-    notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
-    start_notebook = ExecuteProcess(cmd = ["cd {} && python3 -m notebook --allow-root".format(notebook_dir)], shell = True, output = "screen")
+    # notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
+    # start_notebook = ExecuteProcess(cmd = ["cd {} && python3 -m notebook --allow-root".format(notebook_dir)], shell = True, output = "screen")
 
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare("crm_moveit_config"), "config", "moveit.rviz"]
@@ -124,6 +124,6 @@ def generate_launch_description():
             # moveit_py_node,
             # start_notebook,
             rviz_node,
-            # servo_node,
+            servo_node,
         ]
     )
