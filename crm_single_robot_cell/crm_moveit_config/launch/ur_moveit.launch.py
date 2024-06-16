@@ -51,13 +51,27 @@ def generate_launch_description():
             .to_moveit_configs()
     )
 
+    move_group_configuration = {
+        "publish_robot_description_semantic": True,
+        "allow_trajectory_execution": True,
+        "publish_planning_scene": True,
+        "publish_geometry_updates": True,
+        "publish_state_updates": True,
+        "publish_transforms_updates": True,
+    }
+
+    move_group_params = [
+        moveit_config.to_dict(),
+        move_group_configuration,
+    ]
+
+
     move_group_node = Node(
         package="moveit_ros_move_group",
         executable="move_group",
         output="screen",
-        parameters=[
-            moveit_config.to_dict(),
-        ],
+        parameters=move_group_params,
+        additional_env={"DISPLAY": ":0"},
     )
 
     # moveit_py_node = Node(
@@ -68,18 +82,18 @@ def generate_launch_description():
     #     parameters=[moveit_config.to_dict()],
     # )
 
-    servo_yaml = load_yaml("crm_moveit_config", "config/ur_servo.yaml")
-    servo_params = {"moveit_servo": servo_yaml}
-    servo_node = Node(
-        package="moveit_servo",
-        condition=IfCondition(launch_servo),
-        executable="servo_node_main",
-        parameters=[
-            moveit_config.to_dict(),
-            servo_params,
-        ],
-        output="screen",
-    )
+    # servo_yaml = load_yaml("crm_moveit_config", "config/ur_servo.yaml")
+    # servo_params = {"moveit_servo": servo_yaml}
+    # servo_node = Node(
+    #     package="moveit_servo",
+    #     condition=IfCondition(launch_servo),
+    #     executable="servo_node_main",
+    #     parameters=[
+    #         moveit_config.to_dict(),
+    #         servo_params,
+    #     ],
+    #     output="screen",
+    # )
 
     notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
     start_notebook = ExecuteProcess(cmd = ["cd {} && python3 -m notebook --allow-root".format(notebook_dir)], shell = True, output = "screen")
@@ -110,6 +124,6 @@ def generate_launch_description():
             # moveit_py_node,
             # start_notebook,
             rviz_node,
-            servo_node,
+            # servo_node,
         ]
     )
