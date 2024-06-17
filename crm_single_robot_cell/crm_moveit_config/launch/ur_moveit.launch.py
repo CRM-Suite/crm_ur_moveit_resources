@@ -32,11 +32,18 @@ def load_yaml(package_name, file_path):
 
 def generate_launch_description():
     launch_servo = LaunchConfiguration("launch_servo")
+    launch_notebook = LaunchConfiguration("launch_notebook")
 
     launch_servo_arg = DeclareLaunchArgument(
         "launch_servo", 
         default_value="false",
         description="Launch Servo?"
+    )
+
+    launch_notebook_arg = DeclareLaunchArgument(
+        "launch_notebook", 
+        default_value="false",
+        description="Launch Jupyter Notebook?"
     )
 
     example_file = DeclareLaunchArgument(
@@ -95,8 +102,13 @@ def generate_launch_description():
         output="screen",
     )
 
-    # notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
-    # start_notebook = ExecuteProcess(cmd = ["cd {} && python3 -m notebook --allow-root".format(notebook_dir)], shell = True, output = "screen")
+    notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
+    start_notebook = ExecuteProcess(
+        cmd=["cd {} && python3 -m notebook --allow-root".format(notebook_dir)],
+        shell=True,
+        output="screen",
+        condition=IfCondition(launch_notebook)
+    )
 
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare("crm_moveit_config"), "config", "moveit.rviz"]
@@ -119,10 +131,11 @@ def generate_launch_description():
     return LaunchDescription(
         [
             launch_servo_arg,
+            launch_notebook_arg,
             # example_file,
             move_group_node,
             # moveit_py_node,
-            # start_notebook,
+            start_notebook,
             rviz_node,
             servo_node,
         ]
