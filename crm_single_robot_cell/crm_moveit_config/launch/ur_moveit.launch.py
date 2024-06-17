@@ -81,13 +81,13 @@ def generate_launch_description():
         additional_env={"DISPLAY": ":0"},
     )
 
-    # moveit_py_node = Node(
-    #     name="moveit_py",
-    #     package="crm_moveit_config",
-    #     executable=LaunchConfiguration("example_file"),
-    #     output="both",
-    #     parameters=[moveit_config.to_dict()],
-    # )
+    moveit_py_node = Node(
+        name="moveit_py",
+        package="crm_moveit_config",
+        executable=LaunchConfiguration("example_file"),
+        output="both",
+        parameters=[moveit_config.to_dict()],
+    )
 
     servo_yaml = load_yaml("crm_moveit_config", "config/ur_servo.yaml")
     servo_params = {"moveit_servo": servo_yaml}
@@ -132,9 +132,9 @@ def generate_launch_description():
         [
             launch_servo_arg,
             launch_notebook_arg,
-            # example_file,
+            example_file,
             move_group_node,
-            # moveit_py_node,
+            moveit_py_node,
             start_notebook,
             rviz_node,
             servo_node,

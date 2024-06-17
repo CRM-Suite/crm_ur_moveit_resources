@@ -42,6 +42,11 @@ install(
   DESTINATION lib/${PROJECT_NAME}
 )
 
+install(PROGRAMS
+  examples/example3.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 install(
   FILES .setup_assistant DESTINATION share/${PROJECT_NAME}
 )
