@@ -33,6 +33,7 @@ def load_yaml(package_name, file_path):
 def generate_launch_description():
     launch_servo = LaunchConfiguration("launch_servo")
     launch_notebook = LaunchConfiguration("launch_notebook")
+    launch_moveitpy = LaunchConfiguration("launch_moveitpy")
 
     launch_servo_arg = DeclareLaunchArgument(
         "launch_servo", 
@@ -44,6 +45,12 @@ def generate_launch_description():
         "launch_notebook", 
         default_value="false",
         description="Launch Jupyter Notebook?"
+    )
+    
+    launch_moveitpy_arg = DeclareLaunchArgument(
+        "launch_moveitpy",
+        default_value="false",
+        description="Launch MoveIt with Python Example?"
     )
 
     example_file = DeclareLaunchArgument(
@@ -84,6 +91,7 @@ def generate_launch_description():
     moveit_py_node = Node(
         name="moveit_py",
         package="crm_moveit_config",
+        condition=IfCondition(launch_moveitpy),
         executable=LaunchConfiguration("example_file"),
         output="both",
         parameters=[moveit_config.to_dict()],
@@ -99,6 +107,14 @@ def generate_launch_description():
             moveit_config.to_dict(),
             servo_params,
         ],
+        output="screen",
+    )
+
+    joy_node = Node(
+        package="joy",
+        condition=IfCondition(launch_servo),
+        executable="joy_node",
+        name="joy_node",
         output="screen",
     )
 
@@ -132,11 +148,13 @@ def generate_launch_description():
         [
             launch_servo_arg,
             launch_notebook_arg,
+            launch_moveitpy_arg,
             example_file,
             move_group_node,
             moveit_py_node,
             start_notebook,
             rviz_node,
             servo_node,
+            joy_node,
         ]
     )
