@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
-  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <xacro:include filename="$(find crm_description)/urdf/ur_macro.xacro"/>
 
   <xacro:macro name="crm_robot" params="
     name
@@ -56,13 +56,16 @@
         <geometry>
           <mesh filename="package://crm_description/meshes/bench_simplified_corrected.stl"/>
         </geometry>
-        <origin rpy="0 0 ${pi}" xyz="0 0.73 -0.78"/>
+        <origin rpy="0 0 ${pi}" xyz="0 0.72 -0.776572"/>
+        <material name="custom_blue">
+          <color rgba="${106/255} ${165/255} ${219/255} 1.0"/>
+        </material>
       </visual>
       <collision>
         <geometry>
           <mesh filename="package://crm_description/meshes/bench_simplified_corrected.stl"/>
         </geometry>
-        <origin rpy="0 0 ${pi}" xyz="0 0.73 -0.78"/>
+        <origin rpy="0 0 ${pi}" xyz="0 0.72 -0.776572"/>
       </collision>
     </link>
 
@@ -70,7 +73,7 @@
     <joint name="base_to_robot_mount" type="fixed">
       <parent link="vention_bench"/>
       <child link="robot_mount"/>
-      <origin xyz="0.315 0.6 0.01" rpy="0 0 ${pi}" />
+      <origin xyz="0.315 0.607 0.0145" rpy="0 0 ${pi}" />
     </joint>
 
    <!-- arm -->
@@ -113,6 +116,13 @@
      >
      <origin xyz="0 0 0" rpy="0 0 0" />
    </xacro:ur_robot>
+
+    <link name="right_ur3_bltouch"/>
+    <joint name="right_ur3_wrist_3-bltouch" type="fixed">
+      <parent link="right_ur3_wrist_3_link" />
+      <child link="right_ur3_bltouch" />
+      <origin xyz="0 0.0674 0.020661" rpy="0 ${pi/2} ${pi/2}" />
+    </joint>
 
   </xacro:macro>
 </robot>
