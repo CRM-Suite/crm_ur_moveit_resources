@@ -397,7 +397,7 @@
           <geometry>
             <mesh filename="package://crm_description/meshes/end_effector.stl"/>
           </geometry>
-          <origin rpy="${-pi/2} 0 0" xyz="-0.021844 0.003186 0"/>
+          <origin rpy="${-pi/2} 0 ${-pi/2}" xyz="0.003186 0.021844 0"/>
           <material name="custom_gray">
             <color rgba="0.24705882352941178 0.34509803921568627 0.40784313725490196 1"/>
           </material>
@@ -406,7 +406,7 @@
           <geometry>
             <mesh filename="package://crm_description/meshes/end_effector.stl"/>
           </geometry>
-          <origin rpy="${-pi/2} 0 0" xyz="-0.021844 0.003186 0"/>
+          <origin rpy="${-pi/2} 0 ${-pi/2}" xyz="0.003186 0.021844 0"/>
         </collision>
     </link>
     

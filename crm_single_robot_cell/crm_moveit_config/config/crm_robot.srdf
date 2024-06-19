@@ -19,7 +19,15 @@
         <joint name="right_ur3_shoulder_pan_joint" value="1.57"/>
         <joint name="right_ur3_wrist_1_joint" value="-1.57"/>
         <joint name="right_ur3_wrist_2_joint" value="-3.14"/>
-        <joint name="right_ur3_wrist_3_joint" value="1.57"/>
+        <joint name="right_ur3_wrist_3_joint" value="3.14"/>
+    </group_state>
+    <group_state name="sim_start" group="right_manipulator">
+        <joint name="right_ur3_elbow_joint" value="1.374"/>
+        <joint name="right_ur3_shoulder_lift_joint" value="-1.293"/>
+        <joint name="right_ur3_shoulder_pan_joint" value="1.028"/>
+        <joint name="right_ur3_wrist_1_joint" value="-1.624"/>
+        <joint name="right_ur3_wrist_2_joint" value="-1.558"/>
+        <joint name="right_ur3_wrist_3_joint" value="3.14"/>
     </group_state>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="right_ur3_base_link_inertia" link2="right_ur3_shoulder_link" reason="Adjacent"/>
