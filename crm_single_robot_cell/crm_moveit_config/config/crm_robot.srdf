@@ -21,6 +21,14 @@
         <joint name="right_ur3_wrist_2_joint" value="-3.14"/>
         <joint name="right_ur3_wrist_3_joint" value="3.14"/>
     </group_state>
+    <group_state name="calibration2" group="right_manipulator">
+        <joint name="right_ur3_elbow_joint" value="1.234"/>
+        <joint name="right_ur3_shoulder_lift_joint" value="5.861"/>
+        <joint name="right_ur3_shoulder_pan_joint" value="-5.372"/>
+        <joint name="right_ur3_wrist_1_joint" value="-2.418"/>
+        <joint name="right_ur3_wrist_2_joint" value="6.186"/>
+        <joint name="right_ur3_wrist_3_joint" value="3.388"/>
+    </group_state>
     <group_state name="sim_start" group="right_manipulator">
         <joint name="right_ur3_elbow_joint" value="1.374"/>
         <joint name="right_ur3_shoulder_lift_joint" value="-1.293"/>

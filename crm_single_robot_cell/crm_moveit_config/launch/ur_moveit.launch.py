@@ -104,8 +104,8 @@ def generate_launch_description():
         condition=IfCondition(launch_servo),
         executable="servo_node_main",
         parameters=[
-            moveit_config.to_dict(),
             servo_params,
+            moveit_config.to_dict(),
         ],
         output="screen",
     )
