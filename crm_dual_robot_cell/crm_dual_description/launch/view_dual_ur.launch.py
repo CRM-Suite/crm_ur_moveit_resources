@@ -1,20 +1,19 @@
 from launch import LaunchDescription
 from launch.substitutions import Command, PathJoinSubstitution
-
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    description_package = FindPackageShare("crm_description")
+    description_package = FindPackageShare("crm_dual_description")
     description_file = PathJoinSubstitution(
         [description_package, "urdf", "crm_dual.urdf.xacro"]
     )
     rvizconfig_file = PathJoinSubstitution([description_package, "rviz", "urdf.rviz"])
 
     robot_description = ParameterValue(
-        Command(["xacro ", description_file, " ", "alice_ur_type:=", "ur3", " ", "bob_ur_type:=", "ur3"]), value_type=str
+        Command(["xacro ", description_file]), value_type=str
     )
 
     robot_state_publisher_node = Node(
