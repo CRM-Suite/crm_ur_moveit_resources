@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(crm_control)
+project(crm_dual_control)
 
 find_package(ament_cmake REQUIRED)
 

@@ -121,7 +121,9 @@
     <joint name="right_ur3_wrist_3-bltouch" type="fixed">
       <parent link="right_ur3_wrist_3_link" />
       <child link="right_ur3_bltouch" />
-      <origin xyz="0 0.0674 0.020661" rpy="0 ${pi/2} ${pi/2}" />
+      <origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+      <!-- <origin xyz="0 0 0" rpy="0 ${-pi/2} 0" /> -->
+      <!-- <origin xyz="0 0.0674 0.020661" rpy="0 ${pi/2} ${pi/2}" /> -->
     </joint>
 
   </xacro:macro>
