@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: crm_dual_description
+    relative_path: urdf/crm_dual.urdf.xacro
+  srdf:
+    relative_path: config/crm_robot.srdf
+  package_settings:
+    author_name: Vihaan Shah
+    author_email: vihaan.shah@uconn.edu
+    generated_timestamp: 1718990612
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

@@ -1,0 +1,15 @@
+# Default initial positions for crm_robot's ros2_control fake system
+
+initial_positions:
+  left_ur3_elbow_joint: 0
+  left_ur3_shoulder_lift_joint: 0
+  left_ur3_shoulder_pan_joint: 0
+  left_ur3_wrist_1_joint: 0
+  left_ur3_wrist_2_joint: 0
+  left_ur3_wrist_3_joint: 0
+  right_ur3_elbow_joint: 0
+  right_ur3_shoulder_lift_joint: 0
+  right_ur3_shoulder_pan_joint: 0
+  right_ur3_wrist_1_joint: 0
+  right_ur3_wrist_2_joint: 0
+  right_ur3_wrist_3_joint: 0
