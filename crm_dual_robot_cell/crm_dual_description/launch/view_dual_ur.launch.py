@@ -10,7 +10,9 @@ def generate_launch_description():
     description_file = PathJoinSubstitution(
         [description_package, "urdf", "crm_dual.urdf.xacro"]
     )
-    rvizconfig_file = PathJoinSubstitution([description_package, "rviz", "urdf.rviz"])
+    rvizconfig_file = PathJoinSubstitution(
+        [description_package, "rviz", "view_robot.rviz"]
+    )
 
     robot_description = ParameterValue(
         Command(["xacro ", description_file]), value_type=str
