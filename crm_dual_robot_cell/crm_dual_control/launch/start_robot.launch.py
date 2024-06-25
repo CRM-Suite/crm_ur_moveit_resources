@@ -195,11 +195,11 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "launch_rviz", default_value="true", description="Launch RViz?"
+            "launch_rviz", default_value="false", description="Launch RViz?"
         )
     )
 
-    ur_launch_dir = get_package_share_directory("ur_robot_driver")
+    ur_launch_dir = get_package_share_directory("crm_dual_control")
 
     left_ur3 = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -263,6 +263,6 @@ def generate_launch_description():
         declared_arguments
         + [
             left_ur3_with_namespace,
-            # right_ur3_with_namespace,
+            right_ur3_with_namespace,
         ]
     )

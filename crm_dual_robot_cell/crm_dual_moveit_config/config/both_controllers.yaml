@@ -4,22 +4,9 @@ moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControll
 
 moveit_simple_controller_manager:
   controller_names:
-    - right_manipulator_controller
-    - left_manipulator_controller
+    - scaled_joint_trajectory_controller
 
-  right_manipulator_controller:
-    type: FollowJointTrajectory
-    action_ns: follow_joint_trajectory
-    default: true
-    joints:
-      - right_ur3_shoulder_pan_joint
-      - right_ur3_shoulder_lift_joint
-      - right_ur3_elbow_joint
-      - right_ur3_wrist_1_joint
-      - right_ur3_wrist_2_joint
-      - right_ur3_wrist_3_joint
-
-  left_manipulator_controller:
+  scaled_joint_trajectory_controller:
     type: FollowJointTrajectory
     action_ns: follow_joint_trajectory
     default: true
@@ -30,3 +17,9 @@ moveit_simple_controller_manager:
       - left_ur3_wrist_1_joint
       - left_ur3_wrist_2_joint
       - left_ur3_wrist_3_joint
+      - right_ur3_shoulder_pan_joint
+      - right_ur3_shoulder_lift_joint
+      - right_ur3_elbow_joint
+      - right_ur3_wrist_1_joint
+      - right_ur3_wrist_2_joint
+      - right_ur3_wrist_3_joint
