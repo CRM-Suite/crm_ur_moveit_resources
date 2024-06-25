@@ -30,12 +30,17 @@ Resources for configuring and using the Universal Robots arms with MoveIt for th
 ## Usage for Single Arm Setup
 
 1. **Starting the Universal Robots ROS2 Driver:**
-    ```bash
+   Source the installation
+   ```
+   source install/setup.bash
+   ```
+   
+   ```bash
     ros2 launch crm_control start_robot.launch.py
     ```
     Set the use_fake_hardware:=true if working in simulation.
 
-2. **Running Example Applications:**
+3. **Running Example Applications:**
     ```bash
     ros2 launch crm_moveit_config ur_moveit.launch.py
     ```
