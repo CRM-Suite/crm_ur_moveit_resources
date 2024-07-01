@@ -1,23 +1,16 @@
 import os
-import yaml
-
 from pathlib import Path
 
+import yaml
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, RegisterEventHandler
 from launch.conditions import IfCondition
 from launch.event_handlers import OnProcessExit
-from launch.substitutions import (
-    LaunchConfiguration,
-    PathJoinSubstitution,
-)
-
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-
 from moveit_configs_utils import MoveItConfigsBuilder
-
-from ament_index_python.packages import get_package_share_directory
 
 
 def load_yaml(package_name, file_path):
@@ -30,27 +23,24 @@ def load_yaml(package_name, file_path):
     except OSError:  # parent of IOError, OSError *and* WindowsError where available
         return None
 
+
 def generate_launch_description():
     launch_servo = LaunchConfiguration("launch_servo")
     launch_notebook = LaunchConfiguration("launch_notebook")
     launch_moveitpy = LaunchConfiguration("launch_moveitpy")
 
     launch_servo_arg = DeclareLaunchArgument(
-        "launch_servo", 
-        default_value="false",
-        description="Launch Servo?"
+        "launch_servo", default_value="false", description="Launch Servo?"
     )
 
     launch_notebook_arg = DeclareLaunchArgument(
-        "launch_notebook", 
-        default_value="false",
-        description="Launch Jupyter Notebook?"
+        "launch_notebook", default_value="false", description="Launch Jupyter Notebook?"
     )
-    
+
     launch_moveitpy_arg = DeclareLaunchArgument(
         "launch_moveitpy",
         default_value="false",
-        description="Launch MoveIt with Python Example?"
+        description="Launch MoveIt with Python Example?",
     )
 
     example_file = DeclareLaunchArgument(
@@ -61,8 +51,11 @@ def generate_launch_description():
 
     moveit_config = (
         MoveItConfigsBuilder("crm_robot", package_name="crm_moveit_config")
-            .moveit_cpp(file_path=get_package_share_directory("crm_moveit_config") + "/config/notebook.yaml")
-            .to_moveit_configs()
+        .moveit_cpp(
+            file_path=get_package_share_directory("crm_moveit_config")
+            + "/config/notebook.yaml"
+        )
+        .to_moveit_configs()
     )
 
     move_group_configuration = {
@@ -78,7 +71,6 @@ def generate_launch_description():
         moveit_config.to_dict(),
         move_group_configuration,
     ]
-
 
     move_group_node = Node(
         package="moveit_ros_move_group",
@@ -118,12 +110,14 @@ def generate_launch_description():
         output="screen",
     )
 
-    notebook_dir = os.path.join(get_package_share_directory("crm_moveit_config"), "examples")
+    notebook_dir = os.path.join(
+        get_package_share_directory("crm_moveit_config"), "examples"
+    )
     start_notebook = ExecuteProcess(
         cmd=["cd {} && python3 -m notebook --allow-root".format(notebook_dir)],
         shell=True,
         output="screen",
-        condition=IfCondition(launch_notebook)
+        condition=IfCondition(launch_notebook),
     )
 
     rviz_config_file = PathJoinSubstitution(
@@ -144,6 +138,12 @@ def generate_launch_description():
         ],
     )
 
+    velocity_publisher = Node(
+        package="crm_moveit_config",
+        executable="end_effector_velocity_publisher",
+        name="end_effector_velocity_publisher",
+    )
+
     return LaunchDescription(
         [
             launch_servo_arg,
@@ -156,5 +156,6 @@ def generate_launch_description():
             rviz_node,
             servo_node,
             joy_node,
+            velocity_publisher,
         ]
     )
