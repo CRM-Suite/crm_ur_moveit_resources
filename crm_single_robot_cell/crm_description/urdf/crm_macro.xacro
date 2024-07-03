@@ -1,14 +1,11 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro">
-
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find crm_description)/urdf/ur_macro.xacro"/>
-    
+
   <xacro:macro name="crm_robot" params="
-    name
-    tf_prefix
     parent
-    ur_type
     *origin
+    ur_type
     joint_limits_parameters_file
     kinematics_parameters_file
     physical_parameters_file
@@ -46,7 +43,7 @@
       <origin xyz="0.315 0.607 0.0145" rpy="0 0 ${pi}" />
     </joint>
 
-    <!-- arm -->
+    <!--This will create the specific robot-->
     <xacro:ur_robot
       name="right_ur3"
       tf_prefix="right_ur3_"
