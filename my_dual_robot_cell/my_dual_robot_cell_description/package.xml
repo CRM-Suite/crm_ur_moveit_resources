@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>crm_dual_description</name>
+  <version>1.0.0</version>
+
+  <description>Dual arm UR3 description for the CRM system.</description>
+  <maintainer email="vihaan.shah@uconn.edu">Vihaan Shah</maintainer>
+
+  <license file="LICENSE">BSD-3-Clause</license>
+  <!-- The UR background wall (meshes/ur_background.jpg)constitutes “Graphical Documentation” the use of which is subject to and governed by our “Terms and Conditions for use of Graphical Documentation”, which can be found here: https://www.universal-robots.com/legal/terms-and-conditions/terms_and_conditions_for_use_of_graphical_documentation.txt -->
+
+  <author email="vihaan.shah@uconn.edu">Vihaan Shah</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>ur_description</exec_depend>
+  <exec_depend>ur_robot_driver</exec_depend>
+
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
