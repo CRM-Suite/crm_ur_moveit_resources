@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: crm_dual_description
+    relative_path: urdf/crm_dual.urdf.xacro
+  srdf:
+    relative_path: config/crm_dual.srdf
+  package_settings:
+    author_name: Vihaan Shah
+    author_email: vihaan.shah@uconn.edu
+    generated_timestamp: 1719324402
