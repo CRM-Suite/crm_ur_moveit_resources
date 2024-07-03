@@ -32,7 +32,7 @@
         </geometry>
         <origin rpy="0 0 ${pi}" xyz="0 0.72 -0.776572"/>
         <material name="custom_blue">
-          <color rgba="${106/255} ${165/255} ${219/255} 1.0"/>
+          <color rgba="0.4157 0.6471 0.8588 1.0"/>
         </material>
       </visual>
       <collision>
@@ -48,14 +48,14 @@
     <joint name="base_to_alice_robot_mount" type="fixed">
       <parent link="vention_bench"/>
       <child link="alice_robot_mount"/>
-      <origin xyz="0.315 0.607 0.0145" rpy="0 0 ${pi}" />
+      <origin xyz="-0.315 0.607 0.0145" rpy="0 0 ${pi}" />
     </joint>
   
     <link name="bob_robot_mount"/>
     <joint name="base_to_bob_robot_mount" type="fixed">
       <parent link="vention_bench"/>
       <child link="bob_robot_mount"/>
-      <origin xyz="-0.315 0.607 0.0145" rpy="0 0 ${pi}" />
+      <origin xyz="0.315 0.607 0.0145" rpy="0 0 ${pi}" />
     </joint>
 
     <!--Creates the 1st Robot-->
