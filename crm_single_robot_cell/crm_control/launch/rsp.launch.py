@@ -29,17 +29,12 @@
 #
 # Author: Felix Exner
 
-from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
-
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import (
-    Command,
-    FindExecutable,
-    LaunchConfiguration,
-    PathJoinSubstitution,
-)
+from launch.substitutions import (Command, FindExecutable, LaunchConfiguration,
+                                  PathJoinSubstitution)
+from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
@@ -92,7 +87,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "ur_type",
-            description="Type/series of used UR robot.",
+            description="Typo/series of used UR robot.",
             choices=[
                 "ur3",
                 "ur3e",
@@ -119,7 +114,7 @@ def generate_launch_description():
                 [
                     FindPackageShare("crm_control"),
                     "config",
-                    "calibration.yaml",
+                    "my_robot_calibration.yaml",
                 ]
             ),
             description="The calibration configuration of the actual robot used.",

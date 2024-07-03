@@ -4,7 +4,7 @@ project(crm_control)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch
+  DIRECTORY launch config urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

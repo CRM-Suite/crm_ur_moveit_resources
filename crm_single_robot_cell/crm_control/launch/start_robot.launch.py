@@ -1,18 +1,12 @@
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.conditions import IfCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import (Command, FindExecutable, LaunchConfiguration,
+                                  PathJoinSubstitution, TextSubstitution)
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterFile
 from launch_ros.substitutions import FindPackageShare
-
-from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.conditions import IfCondition
-from launch.substitutions import (
-    Command,
-    FindExecutable,
-    LaunchConfiguration,
-    PathJoinSubstitution,
-    TextSubstitution,
-)
 
 
 def generate_launch_description():
@@ -40,7 +34,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "robot_ip",
-            default_value="192.168.0.101",  # put your robot's IP address here
+            default_value="192.168.0.100",  # put your robot's IP address here
             description="IP address by which the robot can be reached.",
         )
     )
@@ -66,17 +60,17 @@ def generate_launch_description():
                 launch_arguments={
                     "ur_type": ur_type,
                     "robot_ip": robot_ip,
-                    "tf_prefix": [LaunchConfiguration("ur_type"), "_"],
+                    "tf_prefix": "right_ur3_",
                     "rviz_config_file": PathJoinSubstitution(
                         [
                             FindPackageShare("crm_description"),
                             "rviz",
-                            "view_robot.rviz",
+                            "urdf.rviz",
                         ]
                     ),
                     "description_launchfile": PathJoinSubstitution(
                         [
-                            FindPackageShare("crm_description"),
+                            FindPackageShare("crm_control"),
                             "launch",
                             "rsp.launch.py",
                         ]
