@@ -21,6 +21,7 @@ ament_target_dependencies(
     moveit_ros_planning_interface
 )
 
+# Example 2
 add_executable(example2 examples/example2.cpp)
 target_include_directories(example2 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -31,6 +32,18 @@ ament_target_dependencies(
     moveit_ros_planning_interface
 )
 
+# Test roll motion
+add_executable(test-roll-motion examples/test-roll-motion.cpp)
+target_include_directories(test-roll-motion PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(
+    test-roll-motion
+    rclcpp
+    moveit_ros_planning_interface
+    tf2_geometry_msgs
+)
+
 install(
   DIRECTORY config launch examples 
   DESTINATION share/${PROJECT_NAME}
@@ -38,10 +51,11 @@ install(
 )
 
 install(
-  TARGETS example1 example2
+  TARGETS example1 example2 test-roll-motion
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Python programs
 install(PROGRAMS
   examples/example3.py
   DESTINATION lib/${PROJECT_NAME}
