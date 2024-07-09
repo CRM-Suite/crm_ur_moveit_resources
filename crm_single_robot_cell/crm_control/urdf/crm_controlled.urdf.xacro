@@ -21,6 +21,9 @@
   <xacro:arg name="use_mock_hardware" default="false" />
   <xacro:arg name="mock_sensor_commands" default="false" />
 
+  <xacro:arg name="initial_positions_file" default="$(find crm_description)/config/initial_positions.yaml"/>
+  <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/>
+  
   <link name="world" />
 
   <!--Create the scene description including the robot-->
@@ -47,6 +50,7 @@
     use_mock_hardware="$(arg use_mock_hardware)"
     mock_sensor_commands="$(arg mock_sensor_commands)"
     headless_mode="$(arg headless_mode)"
+    initial_positions="${xacro.load_yaml(initial_positions_file)}"
   />
 
   <!--If you had more controlled devices in your description, e.g. a gripper, you can add another ros2_control tag here-->
