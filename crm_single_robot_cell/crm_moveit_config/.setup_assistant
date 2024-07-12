@@ -7,19 +7,4 @@ moveit_setup_assistant_config:
   package_settings:
     author_name: Vihaan Shah
     author_email: vihaan.shah@uconn.edu
-    generated_timestamp: 1718811495
-  control_xacro:
-    command:
-      - position
-    state:
-      - position
-      - velocity
-  modified_urdf:
-    xacros:
-      - control_xacro
-  control_xacro:
-    command:
-      - position
-    state:
-      - position
-      - velocity
+    generated_timestamp: 1720810448
