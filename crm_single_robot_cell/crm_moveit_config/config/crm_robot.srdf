@@ -12,11 +12,11 @@
     <group name="right_manipulator">
         <chain base_link="right_ur3_base_link" tip_link="right_ur3_nozzle"/>
     </group>
-    <group name="right_manipulator_duet">
+    <group name="right_manipulator_bltouch">
         <chain base_link="right_ur3_base_link" tip_link="right_ur3_bltouch"/>
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="calibration" group="right_manipulator_duet">
+    <group_state name="calibration" group="right_manipulator_bltouch">
         <joint name="right_ur3_elbow_joint" value="0.2951"/>
         <joint name="right_ur3_shoulder_lift_joint" value="-0.243"/>
         <joint name="right_ur3_shoulder_pan_joint" value="0.729"/>
