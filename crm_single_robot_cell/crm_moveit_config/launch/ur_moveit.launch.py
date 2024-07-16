@@ -4,7 +4,8 @@ from pathlib import Path
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, RegisterEventHandler
+from launch.actions import (DeclareLaunchArgument, ExecuteProcess,
+                            RegisterEventHandler)
 from launch.conditions import IfCondition
 from launch.event_handlers import OnProcessExit
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
@@ -94,19 +95,11 @@ def generate_launch_description():
     servo_node = Node(
         package="moveit_servo",
         condition=IfCondition(launch_servo),
-        executable="servo_node_main",
+        executable="servo_node",
         parameters=[
             servo_params,
             moveit_config.to_dict(),
         ],
-        output="screen",
-    )
-
-    joy_node = Node(
-        package="joy",
-        condition=IfCondition(launch_servo),
-        executable="joy_node",
-        name="joy_node",
         output="screen",
     )
 
@@ -155,7 +148,6 @@ def generate_launch_description():
             start_notebook,
             rviz_node,
             servo_node,
-            joy_node,
             velocity_publisher,
         ]
     )
