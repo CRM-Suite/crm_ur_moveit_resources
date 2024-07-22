@@ -2,6 +2,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
 
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
   <xacro:macro name="crm_dual_robot" params="
     parent
     *origin
@@ -83,7 +87,64 @@
     >
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
+  
+    <link name="bob_bltouch"/>
+    <joint name="bob_wrist_3-bltouch" type="fixed">
+      <parent link="bob_wrist_3_link" />
+      <child link="bob_bltouch" />
+      <origin xyz="0.0674 0 0.0206502" rpy="0 ${pi/2} ${pi}" />
+    </joint>
+
+    <link name="bob_hotend">
+        <visual>
+          <geometry>
+            <mesh filename="package://crm_dual_description/meshes/end_effector_updated_bltouch.stl"/>
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <material name="blue"/>
+        </visual>
+        <collision>
+          <geometry>
+            <mesh filename="package://crm_dual_description/meshes/end_effector_updated_bltouch.stl"/>
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+    </link>
+
+    <joint name="bob_tool0-hotend" type="fixed">
+      <parent link="bob_tool0"/>
+      <child link="bob_hotend"/>
+      <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi}" />
+    </joint>
+
+    <link name="bob_nozzle"/>
+    <joint name="bob_tool0-nozzle" type="fixed">
+      <parent link="bob_tool0" />
+      <child link="bob_nozzle" />
+      <origin xyz="0.002 0.05 0.1368" rpy="${pi} 0 0" />
+    </joint>
+
+    <link name="alice_laser_profiler">
+        <visual>
+          <geometry>
+            <mesh filename="package://crm_dual_description/meshes/laser_profiler.stl"/>
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <material name="blue"/>
+        </visual>
+        <collision>
+          <geometry>
+            <mesh filename="package://crm_dual_description/meshes/laser_profiler.stl"/>
+          </geometry>
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+    </link>
+
+    <joint name="alice_tool0-laser_profiler" type="fixed">
+      <parent link="alice_tool0"/>
+      <child link="alice_laser_profiler"/>
+      <origin xyz="0 0 0" rpy="0 ${pi} 0" />
+    </joint>
 
   </xacro:macro>
-
 </robot>

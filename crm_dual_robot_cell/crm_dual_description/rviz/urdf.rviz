@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /RobotModel1
         - /TF1
+        - /TF1/Frames1
         - /TF1/Tree1
       Splitter Ratio: 0.5
     Tree Height: 398
@@ -79,6 +80,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        alice_laser_profiler:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         alice_robot_mount:
           Alpha: 1
           Show Axes: false
@@ -125,6 +131,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        bob_bltouch:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         bob_flange:
           Alpha: 1
           Show Axes: false
@@ -135,6 +145,15 @@ Visualization Manager:
           Show Trail: false
           Value: true
         bob_ft_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        bob_hotend:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        bob_nozzle:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -192,63 +211,71 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         alice_base:
-          Value: true
+          Value: false
         alice_base_link:
-          Value: true
+          Value: false
         alice_base_link_inertia:
-          Value: true
+          Value: false
         alice_flange:
-          Value: true
+          Value: false
         alice_forearm_link:
-          Value: true
+          Value: false
         alice_ft_frame:
-          Value: true
+          Value: false
+        alice_laser_profiler:
+          Value: false
         alice_robot_mount:
-          Value: true
+          Value: false
         alice_shoulder_link:
-          Value: true
+          Value: false
         alice_tool0:
           Value: true
         alice_upper_arm_link:
-          Value: true
+          Value: false
         alice_wrist_1_link:
-          Value: true
+          Value: false
         alice_wrist_2_link:
-          Value: true
+          Value: false
         alice_wrist_3_link:
-          Value: true
+          Value: false
         bob_base:
-          Value: true
+          Value: false
         bob_base_link:
-          Value: true
+          Value: false
         bob_base_link_inertia:
-          Value: true
+          Value: false
+        bob_bltouch:
+          Value: false
         bob_flange:
-          Value: true
+          Value: false
         bob_forearm_link:
-          Value: true
+          Value: false
         bob_ft_frame:
-          Value: true
+          Value: false
+        bob_hotend:
+          Value: false
+        bob_nozzle:
+          Value: false
         bob_robot_mount:
-          Value: true
+          Value: false
         bob_shoulder_link:
-          Value: true
+          Value: false
         bob_tool0:
-          Value: true
+          Value: false
         bob_upper_arm_link:
-          Value: true
+          Value: false
         bob_wrist_1_link:
-          Value: true
+          Value: false
         bob_wrist_2_link:
-          Value: true
+          Value: false
         bob_wrist_3_link:
-          Value: true
+          Value: false
         vention_bench:
-          Value: true
+          Value: false
         world:
-          Value: true
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -270,7 +297,8 @@ Visualization Manager:
                             alice_wrist_3_link:
                               alice_flange:
                                 alice_tool0:
-                                  {}
+                                  alice_laser_profiler:
+                                    {}
                               alice_ft_frame:
                                 {}
             bob_robot_mount:
@@ -284,9 +312,14 @@ Visualization Manager:
                         bob_wrist_1_link:
                           bob_wrist_2_link:
                             bob_wrist_3_link:
+                              bob_bltouch:
+                                {}
                               bob_flange:
                                 bob_tool0:
-                                  {}
+                                  bob_hotend:
+                                    {}
+                                  bob_nozzle:
+                                    {}
                               bob_ft_frame:
                                 {}
       Update Interval: 0
@@ -321,10 +354,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.49500054121017456
+      Pitch: 0.5250005722045898
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.259994983673096
+      Yaw: 3.534984827041626
     Saved: ~
 Window Geometry:
   Displays:
