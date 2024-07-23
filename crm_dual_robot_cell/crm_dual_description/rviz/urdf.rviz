@@ -9,7 +9,7 @@ Panels:
         - /TF1/Frames1
         - /TF1/Tree1
       Splitter Ratio: 0.5
-    Tree Height: 398
+    Tree Height: 414
   - Class: rviz_common/Views
     Expanded:
       - /Current View1
@@ -231,7 +231,7 @@ Visualization Manager:
         alice_shoulder_link:
           Value: false
         alice_tool0:
-          Value: true
+          Value: false
         alice_upper_arm_link:
           Value: false
         alice_wrist_1_link:
@@ -247,7 +247,7 @@ Visualization Manager:
         bob_base_link_inertia:
           Value: false
         bob_bltouch:
-          Value: false
+          Value: true
         bob_flange:
           Value: false
         bob_forearm_link:
@@ -255,7 +255,7 @@ Visualization Manager:
         bob_ft_frame:
           Value: false
         bob_hotend:
-          Value: false
+          Value: true
         bob_nozzle:
           Value: false
         bob_robot_mount:
@@ -312,10 +312,10 @@ Visualization Manager:
                         bob_wrist_1_link:
                           bob_wrist_2_link:
                             bob_wrist_3_link:
-                              bob_bltouch:
-                                {}
                               bob_flange:
                                 bob_tool0:
+                                  bob_bltouch:
+                                    {}
                                   bob_hotend:
                                     {}
                                   bob_nozzle:
@@ -339,35 +339,35 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.208714246749878
+      Distance: 1.2033638954162598
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.15710565447807312
-        Y: 0.47961053252220154
-        Z: 0.39304378628730774
+        X: 0.148321732878685
+        Y: 0.675389289855957
+        Z: 0.5748822093009949
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5250005722045898
+      Pitch: 0.455000638961792
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.534984827041626
+      Yaw: 3.549980401992798
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1016
+  Height: 1043
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001ad0000039efc0200000002fb000000100044006900730070006c006100790073010000003d00000222000000c900fffffffb0000000a00560069006500770073010000026500000176000000a400ffffff000005cd0000039e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000001ad000003b9fc0200000002fb000000100044006900730070006c006100790073010000003d00000232000000c900fffffffb0000000a00560069006500770073010000027500000181000000a400ffffff000005cd000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1920
-  X: 0
-  Y: 27
+  X: 1920
+  Y: 0
