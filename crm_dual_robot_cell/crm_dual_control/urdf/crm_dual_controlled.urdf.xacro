@@ -42,6 +42,12 @@
   <xacro:arg name="ur_input_recipe_filename" default="$(find ur_robot_driver)/resources/rtde_input_recipe.txt" />
 
 
+  <xacro:arg name="alice_initial_positions_file" default="$(find crm_dual_control)/config/alice_initial_positions.yaml"/>
+  <xacro:property name="alice_initial_positions_file" default="$(arg alice_initial_positions_file)"/>
+  <xacro:arg name="bob_initial_positions_file" default="$(find crm_dual_control)/config/bob_initial_positions.yaml"/>
+  <xacro:property name="bob_initial_positions_file" default="$(arg bob_initial_positions_file)"/>
+
+
   <link name="world" />
 
   <xacro:crm_dual_robot
@@ -75,6 +81,7 @@
     script_sender_port="$(arg alice_script_sender_port)"
     script_command_port="$(arg alice_script_command_port)"
     trajectory_port="$(arg alice_trajectory_port)"
+    initial_positions="${xacro.load_yaml(alice_initial_positions_file)}"
   />
 
   <xacro:ur_ros2_control
@@ -92,6 +99,7 @@
     script_sender_port="$(arg bob_script_sender_port)"
     script_command_port="$(arg bob_script_command_port)"
     trajectory_port="$(arg bob_trajectory_port)"
+    initial_positions="${xacro.load_yaml(bob_initial_positions_file)}"
   />
 
 </robot>
