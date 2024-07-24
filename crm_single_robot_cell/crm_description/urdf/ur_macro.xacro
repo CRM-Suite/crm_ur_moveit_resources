@@ -321,7 +321,7 @@
 
     <!-- ROS-Industrial 'tool0' frame - all-zeros tool frame -->
     <link name="${tf_prefix}tool0">
-        <!-- <visual>
+        <visual>
           <geometry>
             <mesh filename="package://crm_description/meshes/end_effector_thermal_camera.stl"/>
           </geometry>
@@ -335,7 +335,7 @@
             <mesh filename="package://crm_description/meshes/end_effector_thermal_camera.stl"/>
           </geometry>
           <origin rpy="${-pi/2} 0 ${-pi/2}" xyz="0.003186 0.021844 0"/>
-        </collision> -->
+        </collision>
     </link>
     
     <joint name="${tf_prefix}flange-tool0" type="fixed">
