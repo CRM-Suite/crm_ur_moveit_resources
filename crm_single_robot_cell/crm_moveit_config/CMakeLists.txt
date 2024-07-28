@@ -66,6 +66,18 @@ ament_target_dependencies(
     "moveit_ros_planning_interface"
 )
 
+### Example 3
+add_executable(example3 examples/example3.cpp)
+target_include_directories(example3 PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+ament_target_dependencies(
+    example3
+    "rclcpp"
+    "std_msgs"
+    "moveit_ros_planning_interface"
+)
+
 install(
   DIRECTORY config launch examples 
   DESTINATION share/${PROJECT_NAME}
@@ -73,7 +85,7 @@ install(
 )
 
 install(
-  TARGETS end_effector_velocity_publisher example1 example2
+  TARGETS end_effector_velocity_publisher example1 example2 example3
   DESTINATION lib/${PROJECT_NAME}
 )
 
