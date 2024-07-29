@@ -138,14 +138,14 @@
           <geometry>
             <mesh filename="package://crm_dual_description/meshes/laser_profiler.stl"/>
           </geometry>
-          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <origin rpy="0 0 0" xyz="-0.01 0.0075 0.0225"/>
           <material name="custom_gray"/>
         </visual>
         <collision>
           <geometry>
             <mesh filename="package://crm_dual_description/meshes/laser_profiler.stl"/>
           </geometry>
-          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <origin rpy="0 0 0" xyz="-0.01 0.0075 0.0225"/>
         </collision>
     </link>
 
