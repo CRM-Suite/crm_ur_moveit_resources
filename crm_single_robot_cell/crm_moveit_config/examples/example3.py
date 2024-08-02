@@ -37,7 +37,7 @@ def main():
 
     # Instantiate MoveItPy instance and get planning component
     robot = MoveItPy(node_name="moveit_py")
-    planning_component = robot.get_planning_component("right_manipulator")
+    planning_component = robot.get_planning_component("manipulator")
     logger.info("MoveItPy instance created")
 
     # Set start state to current state

@@ -60,7 +60,7 @@ def generate_launch_description():
                 launch_arguments={
                     "ur_type": ur_type,
                     "robot_ip": robot_ip,
-                    "tf_prefix": "right_ur3_",
+                    "tf_prefix": "",
                     "rviz_config_file": PathJoinSubstitution(
                         [
                             FindPackageShare("crm_description"),

@@ -9,10 +9,10 @@ public:
 
     void run()
     {
-        // Plan and execute for right manipulator
+        // Plan and execute for alice manipulator
         planAndExecuteForManipulator("alice_manipulator");
 
-        // Then plan and execute for left manipulator
+        // Then plan and execute for bob manipulator
         planAndExecuteForManipulator("bob_manipulator");
     }
 

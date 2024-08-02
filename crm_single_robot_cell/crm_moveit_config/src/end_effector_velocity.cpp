@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
     robot_model_loader::RobotModelLoader robot_model_loader(node, "robot_description");
     auto kinematic_model = robot_model_loader.getModel();
     robot_state = std::make_shared<moveit::core::RobotState>(kinematic_model);
-    joint_model_group = kinematic_model->getJointModelGroup("right_manipulator");
+    joint_model_group = kinematic_model->getJointModelGroup("manipulator");
 
     auto joint_state_subscriber = node->create_subscription<sensor_msgs::msg::JointState>(
         "joint_states", 10, jointStateCallback);

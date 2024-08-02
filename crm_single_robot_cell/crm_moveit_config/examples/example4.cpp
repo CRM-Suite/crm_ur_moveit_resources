@@ -14,7 +14,7 @@ public:
     {
         // This method will be called after construction, when it's safe to use shared_from_this()
         move_group_interface_ = std::make_unique<moveit::planning_interface::MoveGroupInterface>(
-            shared_from_this(), "right_manipulator");
+            shared_from_this(), "manipulator");
         
         move_group_interface_->setPlanningPipelineId("pilz_industrial_motion_planner");
         move_group_interface_->setPlannerId("LIN");

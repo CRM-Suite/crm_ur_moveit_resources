@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
         .detach();
 
     using moveit::planning_interface::MoveGroupInterface;
-    auto move_group_interface = MoveGroupInterface(node, "right_manipulator");
+    auto move_group_interface = MoveGroupInterface(node, "manipulator");
 
     move_group_interface.setPlanningPipelineId("pilz_industrial_motion_planner");
     move_group_interface.setPlannerId("LIN");

@@ -45,8 +45,8 @@
 
     <!--This will create the specific robot-->
     <xacro:ur_robot
-      name="right_ur3"
-      tf_prefix="right_ur3_"
+      name="crm"
+      tf_prefix=""
       parent="robot_mount"
       joint_limits_parameters_file="${joint_limits_parameters_file}"
       kinematics_parameters_file="${kinematics_parameters_file}"
@@ -56,17 +56,17 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:ur_robot>
 
-    <link name="right_ur3_bltouch"/>
-    <joint name="right_ur3_wrist_3-bltouch" type="fixed">
-      <parent link="right_ur3_wrist_3_link" />
-      <child link="right_ur3_bltouch" />
+    <link name="bltouch"/>
+    <joint name="wrist_3-bltouch" type="fixed">
+      <parent link="wrist_3_link" />
+      <child link="bltouch" />
       <origin xyz="0.0674 0 0.0206502" rpy="0 ${pi/2} ${pi}" />
     </joint>
 
-    <link name="right_ur3_nozzle"/>
-    <joint name="right_ur3_tool0-nozzle" type="fixed">
-      <parent link="right_ur3_tool0" />
-      <child link="right_ur3_nozzle" />
+    <link name="nozzle"/>
+    <joint name="tool0-nozzle" type="fixed">
+      <parent link="tool0" />
+      <child link="nozzle" />
       <origin xyz="0.002 0.05 0.1368" rpy="${pi} 0 0" />
     </joint>
 
