@@ -26,6 +26,12 @@ def load_yaml(package_name, file_path):
 
 
 def generate_launch_description():
+
+    bob_launch_servo = LaunchConfiguration("bob_launch_servo")
+    bob_launch_servo_arg = DeclareLaunchArgument(
+        "bob_launch_servo", default_value="false", description="Launch Servo?"
+    )
+
     moveit_config = MoveItConfigsBuilder(
         "crm_dual_robot", package_name="crm_dual_moveit_config"
     ).to_moveit_configs()
@@ -52,6 +58,19 @@ def generate_launch_description():
         additional_env={"DISPLAY": ":0"},
     )
 
+    servo_yaml = load_yaml("crm_dual_moveit_config", "config/bob_bltouch_servo.yaml")
+    servo_params = {"moveit_servo": servo_yaml}
+    servo_node = Node(
+        package="moveit_servo",
+        condition=IfCondition(bob_launch_servo),
+        executable="servo_node",
+        parameters=[
+            servo_params,
+            moveit_config.to_dict(),
+        ],
+        output="screen",
+    )
+
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare("crm_dual_moveit_config"), "config", "moveit.rviz"]
     )
@@ -73,6 +92,8 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
+            bob_launch_servo_arg,
+            servo_node,
             move_group_node,
             rviz_node,
         ]
