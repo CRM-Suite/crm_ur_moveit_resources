@@ -91,14 +91,14 @@
     <link name="bob_hotend">
         <visual>
           <geometry>
-            <mesh filename="package://crm_dual_description/meshes/end_effector.stl"/>
+            <mesh filename="package://crm_dual_description/meshes/end_effector_thermal_camera.stl"/>
           </geometry>
           <origin rpy="${-pi/2} 0 ${-pi/2}" xyz="0.003186 0.021844 0"/>
           <material name="custom_gray"/>
         </visual>
         <collision>
           <geometry>
-            <mesh filename="package://crm_dual_description/meshes/end_effector.stl"/>
+            <mesh filename="package://crm_dual_description/meshes/end_effector_thermal_camera.stl"/>
           </geometry>
           <origin rpy="${-pi/2} 0 ${-pi/2}" xyz="0.003186 0.021844 0"/>
         </collision>
